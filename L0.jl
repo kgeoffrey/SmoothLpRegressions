@@ -33,18 +33,13 @@ ww = rand(5)
 
 G_loss(X, Y, w, vari) = length(Y) - sum(exp.(-(X*w .- Y).^2 ./ (2*vari)))
 closure = x -> G_loss(XX, YY, x, 0.5)
-
 fff(x) = exp(x'*x)
 
-derivative(fff, ww)
+hessian(closure, ww)
 
 
 
-
-
-
-
-ForwardDiff.gradient(closure, ww)
+ForwardDiff.hessian(closure, ww)
 
 t = w -> sum(-(XX*w .- YY).^2 )
 
