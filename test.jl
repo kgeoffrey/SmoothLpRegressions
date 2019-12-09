@@ -12,7 +12,7 @@ scatter(X,Y, ylims = (0,maximum(Y)), xlims = (0,500), markersize = 2)
 
 mse_(x) = sum(x.^2)
 function addbias(X)
-    X = hcat(ones(length(X)), X)
+    X = hcat(ones(size(X, 1)), X)
     return X
 end
 
