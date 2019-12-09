@@ -22,10 +22,10 @@ function least_squares(X, Y)
     return w[1], w[2]
 end
 
-intercept, w = least_squares(X,Y)
-f(x) = x'*w
+intercept, w = least_squares(XX,YY)
+ff(x) = x'*w
 
-plot!(f, X, label="Least Squares (L2)", linewidth = 2)
+plot!(ff, XX, label="Least Squares (L2)", linewidth = 2)
 
 ###### L0 norm approximation ###### best for ordinal and nominal data
 ## https://hal.archives-ouvertes.fr/hal-00173357/document

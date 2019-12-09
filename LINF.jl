@@ -32,12 +32,12 @@ end
 
 ###testing
 
-XX = rand(500)*500
-YY = XX .^abs.(rand(Normal(1.,0.2), 500)) .+ rand(Normal(0,1), 500)
+XX = rand(1000)*1000
+YY = XX .^(rand(Normal(1.,0.1), 1000)) .+ rand(Normal(0,1), 1000)
 
-lossinf, winf = Linf_this(0.00001, 10000, XX, YY)
+lossinf, winf = Linf_this(0.00001, 1000, XX, YY)
 
 
 f(x) = winf[1] + x'*winf[2]
 scatter(XX, YY)
-plot!(f, XX)
+plot!(f, XX, linewidth = 3, label = "LINF")

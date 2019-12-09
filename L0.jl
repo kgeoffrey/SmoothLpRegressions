@@ -32,10 +32,10 @@ function L0_this(stepsize, epochs, X, Y)
     return loss, w, variances
 end
 
-XX = rand(1000, 1)*1000
-YY = rand(1000)*1000
+XX = rand(100, 1)*100
+YY = rand(100)*100
 
-l0loss, w0,  variances = L0_this(0.001, 100, XX, YY)
+l0loss, w0,  variances = L0_this(0.0001, 1000, XX, YY)
 
 plot(l0loss)
 
