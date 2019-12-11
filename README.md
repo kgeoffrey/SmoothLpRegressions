@@ -6,6 +6,9 @@ that estimates the Mode.
 
 There are some problems with some of the L-norms above (L0, L1, Linf) which you can see by looking at the norm ball:
 
+<p align="center">
+<img src="../master/img/pnorm.png" alt="drawing" width="400"/>
+</p>
 
 All the norms are convex, except the L0-Norm, which makes it very hard (in fact NP hard) to optimize. If you think of norms in terms of
 distance, for the L0-norm, we are trying to minimize the number of nonzero elements of a vector. For the L-infinity-Norm we are only 
