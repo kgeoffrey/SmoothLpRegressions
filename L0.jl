@@ -7,6 +7,8 @@ function addbias(X)
     return X
 end
 
+G_loss(X, Y, w, vari) = length(Y) - sum(exp.(-(X*w - Y).^2 ./ (2*vari)))
+
 function descent(stepsize, epochs, w, X, Y)
     variance = var(X*w .- Y)
     closure = x -> G_loss(X, Y, x, variance)
@@ -32,14 +34,34 @@ function L0_this(stepsize, epochs, X, Y)
     return loss, w, variances
 end
 
-XX = rand(100, 1)*100
-YY = rand(100)*100
 
-l0loss, w0,  variances = L0_this(0.0001, 1000, XX, YY)
+XX = collect(1:100)
+YY = XX .^(2 *(rand(Normal(1.,0), 1))) .+ rand(Normal(10,1000), 100)
+newx = addsquare(XX)
+
+
+l0loss, w0, variances = L0_this(0.01, 100, newx, YY)
 
 plot(l0loss)
 
 
-f(x) = w0[1] + x'*w0[2]
+
 scatter(XX,YY)
 plot!(f, XX, linewidth = 3, label = "L0 regression")
+
+
+
+
+function addsquare(X)
+    X = hcat(X, X.^2)
+    return X
+end
+
+newx = addsquare(XX)
+lossinf, winf = Linf_this(0.00001, 1000, newx, YY)
+
+ff(x) = w0[1] .+ x[:,1] .*w0[2] .+ x[:,2] .*w0[3]
+
+mm = ff(newx)
+
+plot!(mm)
