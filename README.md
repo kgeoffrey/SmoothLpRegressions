@@ -57,3 +57,9 @@ Here I have a noisy, synthetic test data set. The L0-norm is least affected by o
 <p align="center">
 <img src="../master/img/comparison.png" alt="drawing" width="600"/>
 </p>
+
+
+## References
+- https://www.cs.ubc.ca/~schmidtm/Courses/340-F15/L15.pdf
+- http://pages.cs.wisc.edu/~gfung/GeneralL1/L1_approx_bounds.pdf
+- https://hal.archives-ouvertes.fr/hal-00173357/document
