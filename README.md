@@ -1,4 +1,12 @@
 # ExoticRegressions
+Find weights by using fit methods:
+```julia
+
+julia> weights = fit(L0, X_train, Y_train, epochs = 100, stepsize = 0.0001);
+
+ ```
+
+---
 In this repo I tried to implement some hacks around finding measures of central tendency (L0, L1, Linf) for regression problems.
 In terms of LP spaces the central tendency function for mean is the L2-norm, for the median it is the L1-Norm. Arguably less known 
 are other norms for regression problems: the L-Infinity-Norm that is an estimator for the Mid-Range and the L0-"Norm" (not really a norm),
