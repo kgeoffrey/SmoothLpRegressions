@@ -1,4 +1,4 @@
-# ExoticRegressions
+# SmoothLpRegressions
 Find weights by using fit methods:
 ```julia
 
