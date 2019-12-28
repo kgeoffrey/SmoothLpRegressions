@@ -7,29 +7,29 @@ julia> weights = fit(L0, X_train, Y_train, epochs = 100, stepsize = 0.0001);
  ```
 
 ---
-In this repo I tried to implement some hacks around finding measures of central tendency (L0, L1, Linf) for regression problems.
+In this repo I tried to implement some hacks around finding measures of central tendency (L0, L1, L-∞) for regression problems.
 In terms of LP spaces the central tendency function for mean is the L2-norm, for the median it is the L1-Norm. Arguably less known 
-are other norms for regression problems: the L-Infinity-Norm that is an estimator for the Mid-Range and the L0-"Norm" (not really a norm),
+are other norms for regression problems: the L-∞-Norm that is an estimator for the Mid-Range and the L0-"Norm" (not really a norm),
 that estimates the Mode.
 
-There are some problems with some of the L-norms above (L0, L1, Linf) which you can see by looking at the norm ball:
+There are some problems with some of the L-norms above (L0, L1, L-∞) which you can see by looking at the norm ball:
 
 <p align="center">
 <img src="../master/img/pnorm.png" alt="drawing" width="400"/>
 </p>
 
 All the norms are convex, except the L0-Norm, which makes it very hard (in fact NP hard) to optimize. If you think of norms in terms of
-distance, for the L0-norm, we are trying to minimize the number of nonzero elements of a vector. For the L-infinity-Norm we are only 
+distance, for the L0-norm, we are trying to minimize the number of nonzero elements of a vector. For the L-∞-Norm we are only 
 trying to minimize the maximum distance (absolute value) of a vector. For instance for a linear regression problem where the loss function 
 is the L0-norm, we would try to find the coefficient of the equation of a line that goes directly through as many points as possible (if a
 line goes directly through a data point the magnitude of the error is 0!).
 
-In the context of regression, we are trying to minimize the loss functions (L0, L1, L2 and Linf-norms). Going back to the norm ball above,
+In the context of regression, we are trying to minimize the loss functions (L0, L1, L2 and L-∞-norms). Going back to the norm ball above,
 you see that the L1 and L2-norms are not differentiable at every point and the L0 norm is not convex and not differentiable at every point.
 
 Yet these norms can still be more or less well approximated! See the approximations below, everything that follows a sum is applied elementwise (sorry too lazy):
 
-### L-Infinity-Norm
+### L-∞-Norm
 This norm can be approxmiated as follows [[1]](https://www.cs.ubc.ca/~schmidtm/Courses/340-F15/L15.pdf):
 
 <p align="center">
@@ -60,7 +60,7 @@ of Xw - Y in each step and similarily I am using 1 /(2 * variance(Xw-Y)) for L1 
 
 ## Data
 
-Here I have a noisy, synthetic test data set. The L0-norm is least affected by outliers and the L-Infinity_Norm the most:
+Here I have a noisy, assymetrical test data set. The L0-norm is least affected by outliers and the L-∞-Norm the most:
 
 <p align="center">
 <img src="../master/img/comparison.png" alt="drawing" width="600"/>
